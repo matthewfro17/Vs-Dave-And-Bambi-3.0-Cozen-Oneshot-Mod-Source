@@ -98,7 +98,10 @@ class CharacterSelectState extends MusicBeatState
 			new CharacterForm('bf-pixel', 'Pixel Boyfriend', [1,1,1,1])
 		]),
 		new CharacterInSelect('random', [1, 1, 1, 1], [
-			new CharacterForm('random', '???', [1,1,1,1]),
+			new CharacterForm('random', 'Random', [1,1,1,1]),
+		]),
+		new CharacterInSelect('untitledbi', [1, 1, 1, 1], [
+			new CharacterForm('untitledbi', 'Untitledbi', [1,1,1,1]),
 		]),
 	];
 	#if SHADERS_ENABLED
