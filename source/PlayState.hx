@@ -1413,7 +1413,7 @@ class PlayState extends MusicBeatState
 						bg.setGraphicSize(Std.int(bg.width * 3));
 						weirdBG = bg;
 						
-						bg2.loadGraphic(Paths.image(''));
+						var bg2.loadGraphic(Paths.image(''));
 						bg2.setPosition(0, 200);
 						bg2.setGraphicSize(Std.int(bg.width * 3));
 						weirdBG = bg2;
