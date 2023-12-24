@@ -1404,6 +1404,7 @@ class PlayState extends MusicBeatState
 				bgZoom = 0.7;
 
 				var bg:BGSprite = new BGSprite('void', -600, -200, '', null, 1, 1, false, true);
+				var bg2:BGSprite = new BGSprite('void', -600, -200, '', null, 1, 1, false, true);
 
 				switch (bgName.toLowerCase())
 				{
@@ -1413,7 +1414,7 @@ class PlayState extends MusicBeatState
 						bg.setGraphicSize(Std.int(bg.width * 3));
 						weirdBG = bg;
 						
-						var bg2.loadGraphic(Paths.image(''));
+						bg2.loadGraphic(Paths.image(''));
 						bg2.setPosition(0, 200);
 						bg2.setGraphicSize(Std.int(bg.width * 3));
 						weirdBG = bg2;
