@@ -1412,7 +1412,15 @@ class PlayState extends MusicBeatState
 						bg.setPosition(0, 200);
 						bg.setGraphicSize(Std.int(bg.width * 3));
 						weirdBG = bg;
+						
+						bg2.loadGraphic(Paths.image(''));
+						bg2.setPosition(0, 200);
+						bg2.setGraphicSize(Std.int(bg.width * 3));
+						weirdBG = bg2;
+			                	sprites.add(bg2);
+			                	add(bg2);
 						stageName = 'unfairness';
+						
 				}
 				sprites.add(bg);
 				add(bg);
@@ -1425,7 +1433,7 @@ class PlayState extends MusicBeatState
 					baldi.setGraphicSize(Std.int(baldi.width * 0.5));
 					baldi.updateHitbox();
 					sprites.insert(members.indexOf(bg), baldi);
-					insert(members.indexOf(bg), baldi);
+					insert(members.indexOf(bg2), baldi);
 				}
 		}
 		if (!revertedBG)
