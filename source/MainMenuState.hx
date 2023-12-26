@@ -41,23 +41,32 @@ class MainMenuState extends MusicBeatState
 
 	var optionShit:Array<String> = 
 	[
+		'story mode', 
 		'freeplay', 
 		'credits',
-		'options'
+		'ost',
+		'options',
+		'discord'
 	];
 
 	var languagesOptions:Array<String> =
 	[
+		'main_story',
 		'main_freeplay',
 		'main_credits',
-		'main_options'
+		'main_ost',
+		'main_options',
+		'main_discord'
 	];
 
 	var languagesDescriptions:Array<String> =
 	[
+		'desc_story',
 		'desc_freeplay',
 		'desc_credits',
-		'desc_options'
+		'desc_ost',
+		'desc_options',
+		'desc_discord'
 	];
 
 	public static var firstStart:Bool = true;
@@ -197,15 +206,16 @@ class MainMenuState extends MusicBeatState
 			magenta.color = 0xFFfd719b;
 			add(magenta);
 
-			gradientBar = FlxGradient.createGradientFlxSprite(Math.round(FlxG.width), 512, [0x00ff0000, 0x558DE7E5, 0xAAE6F0A9], 1, 90, true);
-			gradientBar.y = FlxG.height - gradientBar.height;
-			gradientBar.scrollFactor.set(0, 0);
-			add(gradientBar);
-			gradientBar.antialiasing = FlxG.save.data.globalAntialiasing;
-
-			checker.scrollFactor.set(0, 0.07);
-			checker.antialiasing = FlxG.save.data.globalAntialiasing;
-			add(checker);
+			if (!FlxG.save.data.lowQuality)
+			{
+				gradientBar = FlxGradient.createGradientFlxSprite(Math.round(FlxG.width), 512, [0x00ff0000, 0x55AE59E4, 0xAA19ECFF], 1, 90, true);
+				gradientBar.y = FlxG.height - gradientBar.height;
+				add(gradientBar);
+				gradientBar.scrollFactor.set(0, 0);
+		
+				add(checker);
+				checker.scrollFactor.set(0, 0.07);
+			}
 		}
 		selectUi = new FlxSprite(0, 0).loadGraphic(Paths.image('mainMenu/Select_Thing', 'preload'));
 		selectUi.scrollFactor.set(0, 0);
@@ -453,7 +463,7 @@ class MainMenuState extends MusicBeatState
 								switch (daChoice)
 								{
 									case 'story mode':
-										FlxG.switchState(new StoryMenuState());
+										FlxG.switchState(new PlaySelectionState());
 									case 'freeplay' | 'freeplay glitch':
 										if (FlxG.random.bool(0.05))
 										{
@@ -461,7 +471,7 @@ class MainMenuState extends MusicBeatState
 										}
 										FlxG.switchState(new FreeplayState());
 									case 'options':
-										FlxG.switchState(new OptionsMenu());
+										FlxG.switchState(new OptionsDirect());
 									case 'ost':
 										FlxG.switchState(new MusicPlayerState());
 									case 'credits':

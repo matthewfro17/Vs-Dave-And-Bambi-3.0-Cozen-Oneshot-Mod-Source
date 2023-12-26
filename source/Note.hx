@@ -33,10 +33,7 @@ class Note extends FlxSprite
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
 
-	private var CharactersWith3D:Array<String> = ['dave-angey', 'bambi-3d', 'expunged', 'bambi-unfair', 'exbungo',
-	'dave-festival-3d', 'dave-3d-recursed', 'bf-3d', 'nofriend', 'dave-angey-old', 'dave-insanity-3d', 'dave-3d-standing-bruh-what',
-	'furiosity-dave', 'furiosity-dave-alpha-4', 'bambi-unfair', 'bambi-3d-scrapped', 'bambi-3d-old',
-	'bambi-unfair-old', 'cockey', 'old-cockey', 'older-cockey', 'pissey', 'old-pissey', 'shartey'];
+	private var CharactersWith3D:Array<String> = ["dave-angey", "bambi-3d", 'bambi-unfair', 'exbungo', 'expunged', 'dave-festival-3d', 'dave-3d-recursed', 'bf-3d', 'nofriend'];
 
 	public var mania:Int = 0;
 
@@ -89,10 +86,15 @@ class Note extends FlxSprite
 		//luckily i think only the devs really noticed that you can see the notes spawn in at the bottom of the screen when there is a modchart.
 		y -= 9000;
 		
-		inCharter ? this.strumTime = strumTime : {
+		/*inCharter ? this.strumTime = strumTime : {
 			this.strumTime = Math.round(strumTime);
 			alpha = 0;
-		}
+		}*/
+
+		if (inCharter)
+			this.strumTime = strumTime;
+		else 
+			this.strumTime = Math.round(strumTime);
 		
 		if (this.strumTime < 0)
 			this.strumTime = 0;
@@ -247,7 +249,10 @@ class Note extends FlxSprite
 				}
 				setGraphicSize(Std.int(width * 1.2 * (noteSize / 0.7)));
 				updateHitbox();
-				antialiasing = true;
+				if(FlxG.save.data.antialiasing)
+					{
+						antialiasing = true;
+					}
 				// noteOffset = -(width - 78 + (mania == 4 ? 30 : 0));
 
 			case 'guitarHero':
@@ -276,7 +281,10 @@ class Note extends FlxSprite
 
 				setGraphicSize(Std.int(width * 0.7));
 				updateHitbox();
-				antialiasing = true;
+				if(FlxG.save.data.antialiasing)
+					{
+						antialiasing = true;
+					}
 			case 'phone' | 'phone-zardy' | 'phone-alt':
 				if (!isSustainNote)
 				{
@@ -321,7 +329,10 @@ class Note extends FlxSprite
 				
 				setGraphicSize(Std.int(width * noteSize));
 				updateHitbox();
-				antialiasing = true;
+				if(FlxG.save.data.antialiasing)
+					{
+						antialiasing = true;
+					}
 				
 				// noteOffset = 20;
 
@@ -333,10 +344,9 @@ class Note extends FlxSprite
 			if (state.localFunny == CharacterFunnyEffect.Dave)
 			{
 				str = 'cheating';
-				str = 'rigged';
 			}
 		}
-		if (str == 'cheating' || str == 'rigged' && PlayState.modchartoption) {
+		if (str == 'cheating' && PlayState.modchartoption) {
 			if (mania == 0) {
 				switch (originalType)
 				{
@@ -403,7 +413,7 @@ class Note extends FlxSprite
 		}
 		if (!isSustainNote) {
 			if (!PlayState.modchartoption) {
-				if (PlayState.SONG.song.toLowerCase() == 'cheating' || PlayState.SONG.song.toLowerCase() == 'rigged')
+				if (PlayState.SONG.song.toLowerCase() == 'cheating')
 					LocalScrollSpeed = 0.75; // target practice old
 				if (PlayState.SONG.song.toLowerCase() == 'kabunga')
 					LocalScrollSpeed = 0.81;

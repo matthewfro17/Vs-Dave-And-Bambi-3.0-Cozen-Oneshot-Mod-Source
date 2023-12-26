@@ -51,6 +51,7 @@ class StoryMenuState extends MusicBeatState
 		new Week(['Blocked', 'Corn-Theft', 'Maze'], LanguageManager.getTextString('story_bambiWeek'), 0xFF00B515, 'bamboi'), // MISTER BAMBI RETARD
 		new Week(['Splitathon'], LanguageManager.getTextString('story_finale'), 0xFF00FFFF, 'splitathon'), // SPLIT THE THONNNNN
 		new Week(['Shredder', 'Greetings', 'Interdimensional', 'Rano'], LanguageManager.getTextString('story_festivalWeek'), 0xFF800080, 'festival'), // FESTEVAL
+		new Week(['Corn', 'Nroc', 'Coooooorn'], LanguageManager.getTextString('story_CornWeek'), 0xFFA5B7C4, 'CornMenu'), // CORN
 	];
 
 	var awaitingExploitation:Bool;

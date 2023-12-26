@@ -72,7 +72,17 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		super();
 
+		if(FlxG.save.data.instaRestart)
+		{
+			FlxG.resetState();
+		}
+
 		Conductor.songPosition = 0;
+
+		if(FlxG.save.data.instaRestart)
+		{
+			FlxG.resetState();
+		}
 
 		bf = new Boyfriend(x, y, daBf);
 		if(bf.animation.getByName('firstDeath') == null)
@@ -109,7 +119,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (controls.BACK)
 		{
 			FlxG.sound.music.stop();
-			PlayState.deathCounter = 0;
 			Application.current.window.title = Main.applicationName;
 
 			if (PlayState.SONG.song.toLowerCase() == "exploitation")

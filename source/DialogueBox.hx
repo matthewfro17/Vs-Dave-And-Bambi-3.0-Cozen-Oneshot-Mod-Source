@@ -234,12 +234,14 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
-		#if SHADERS_ENABLED
-		if (curshader != null)
-		{
-			curshader.shader.uTime.value[0] += elapsed;
+		if(FlxG.save.data.waving){
+			#if SHADERS_ENABLED
+			if (curshader != null)
+			{
+				curshader.shader.uTime.value[0] += elapsed;
+			}
+			#end
 		}
-		#end
 		dropText.text = swagDialogue.text;
 		switch (curCharacter)
 		{
@@ -413,26 +415,32 @@ class DialogueBox extends FlxSpriteGroup
 				shad.waveSpeed = 1;
 				shad.shader.uTime.value[0] = new flixel.math.FlxRandom().float(-100000,100000);
 				shad.shader.uampmul.value[0] = 1;*/
-				#if SHADERS_ENABLED
-				PlayState.screenshader.Enabled = true;
-				#end
-			case 'undistort':
-				#if SHADERS_ENABLED
-				PlayState.screenshader.Enabled = false;
-				#end
-			case 'distortbg':
-				#if SHADERS_ENABLED
-				var shad:Shaders.DistortBGEffect = new Shaders.DistortBGEffect();
-				curshader = shad;
-				shad.waveAmplitude = 0.1;
-				shad.waveFrequency = 5;
-				shad.waveSpeed = 2;
-				if (curCharacter != 'generic')
-				{
-					portraitLeft.shader = shad.shader;
-					portraitRight.shader = shad.shader;
+				if(FlxG.save.data.waving){
+					#if SHADERS_ENABLED
+					PlayState.screenshader.Enabled = true;
+					#end
 				}
-				#end
+			case 'undistort':
+				if(FlxG.save.data.waving){
+					#if SHADERS_ENABLED
+					PlayState.screenshader.Enabled = false;
+					#end
+				}
+			case 'distortbg':
+				if(FlxG.save.data.waving){
+					#if SHADERS_ENABLED
+					var shad:Shaders.DistortBGEffect = new Shaders.DistortBGEffect();
+					curshader = shad;
+					shad.waveAmplitude = 0.1;
+					shad.waveFrequency = 5;
+					shad.waveSpeed = 2;
+					if (curCharacter != 'generic')
+					{
+						portraitLeft.shader = shad.shader;
+						portraitRight.shader = shad.shader;
+					}
+					#end
+				}
 			case 'setfont_normal':
 				dropText.font = 'Comic Sans MS Bold';
 				swagDialogue.font = 'Comic Sans MS Bold';

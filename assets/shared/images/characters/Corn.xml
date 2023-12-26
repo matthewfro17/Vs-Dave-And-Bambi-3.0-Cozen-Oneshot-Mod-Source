@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Corn.png"><SubTexture name="Corn Idle0000" x="1127" y="0" width="337" height="268" frameX="-71" frameY="-106" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Idle0001" x="312" y="585" width="325" height="276" frameX="-75" frameY="-98" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Idle0002" x="0" y="585" width="312" height="282" frameX="-78" frameY="-92" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Idle0003" x="566" y="0" width="303" height="286" frameX="-78" frameY="-87" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Up0000" x="0" y="0" width="300" height="299" frameX="-60" frameY="-75" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Up0001" x="0" y="299" width="292" height="286" frameX="-65" frameY="-87" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Down0000" x="637" y="585" width="267" height="272" frameX="-77" frameY="-102" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Down0001" x="292" y="299" width="266" height="286" frameX="-81" frameY="-87" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Left0000" x="869" y="285" width="247" height="282" frameX="-73" frameY="-92" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Left0001" x="869" y="0" width="258" height="285" frameX="-80" frameY="-89" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Right0000" x="300" y="0" width="266" height="288" frameX="-118" frameY="-86" frameWidth="426" frameHeight="415" />
+<SubTexture name="Corn Right0001" x="558" y="299" width="254" height="286" frameX="-109" frameY="-88" frameWidth="426" frameHeight="415" />
+</TextureAtlas>

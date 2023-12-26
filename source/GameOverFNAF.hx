@@ -25,6 +25,11 @@ class GameOverFNAF extends MusicBeatSubstate
 
 		Conductor.songPosition = 0;
 
+		if(FlxG.save.data.instaRestart)
+		{
+			FlxG.resetState();
+		}
+
 		camFollow = new FlxObject(FlxG.width / 2, FlxG.height / 2, 1, 1);
 		add(camFollow);
 
@@ -77,7 +82,6 @@ class GameOverFNAF extends MusicBeatSubstate
 		if (controls.BACK)
 		{
 			FlxG.sound.music.stop();
-			PlayState.deathCounter = 0;
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			FlxG.switchState(new FreeplayState());
 		}

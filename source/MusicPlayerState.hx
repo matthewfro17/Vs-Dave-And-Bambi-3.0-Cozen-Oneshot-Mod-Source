@@ -16,8 +16,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxStringUtil;
 import lime.utils.Assets;
-import flixel.addons.display.FlxBackdrop;
-import flixel.util.FlxGradient; 
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -46,9 +44,6 @@ class MusicPlayerState extends MusicBeatState
 	private var iconP2:HealthIcon;
 
     private var barText:FlxText;
-
-    var checker:FlxBackdrop = new FlxBackdrop(Paths.image('ui/checkeredBG'), 0.2, 0.2, true, true);
-	var gradientBar:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, 300, 0xFFfd719b);
   
     override function create()
     {
@@ -73,7 +68,7 @@ class MusicPlayerState extends MusicBeatState
             ['roofs', 'baldi'],
             ['importumania', 'importumania'], 
             ['recursed', 'recurser'],
-            ['vs-dave-rap-two', 'dave-cool'],  
+            ['vs-dave-rap-two', 'dave-cool'], 
         ];
         for (i in 0...secretSongs.length)
         {
@@ -113,16 +108,6 @@ class MusicPlayerState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
-        gradientBar = FlxGradient.createGradientFlxSprite(Math.round(FlxG.width), 512, [0x00ff0000, 0x558DE7E5, 0xAAE6F0A9], 1, 90, true);
-		gradientBar.y = FlxG.height - gradientBar.height;
-		add(gradientBar);
-		gradientBar.scrollFactor.set(0, 0);
-		gradientBar.antialiasing = FlxG.save.data.globalAntialiasing;
-
-		add(checker);
-		checker.scrollFactor.set(0, 0.07);
-		checker.antialiasing = FlxG.save.data.globalAntialiasing;
-
         #if desktop
         DiscordClient.changePresence("In the OST Menu", null);
         #end
@@ -130,7 +115,7 @@ class MusicPlayerState extends MusicBeatState
         for (i in 0...songs.length)
         {
             var songText:Alphabet = new Alphabet(0, 0, songs[i].songName + (songs[i].hasVocals ? "" : ((songs[i].songName != 'vs-dave-rap-two' && songs[i].songName != 'vs-dave-rap') ? "-Inst" : "")), true, false);
-            songText.isMenuItemCenter = true;
+            songText.isMenuItem = true;
             songText.targetY = i;
             grpSongs.add(songText);
 
@@ -144,13 +129,7 @@ class MusicPlayerState extends MusicBeatState
         }
 
         //create hp bar for pico funny
-        if(!FlxG.save.data.longAssBar) {
-            healthBarBG = new FlxSprite(0, 50).loadGraphic(Paths.image('ui/healthBar/healthBar'));
-        }
-        else if(FlxG.save.data.longAssBar){
-            healthBarBG = new FlxSprite(0, 50).loadGraphic(Paths.image('ui/healthBar/healthBarWIDE'));
-        }
-       
+        healthBarBG = new FlxSprite(0, 50).loadGraphic(Paths.image('ui/healthBar'));
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
@@ -185,9 +164,6 @@ class MusicPlayerState extends MusicBeatState
 
     override function update(elapsed:Float)
     {
-        checker.x -= 0.21;
-		checker.y -= 0.51;
-        
         super.update(elapsed);
 
         if (barText != null && barText.text != lastText)

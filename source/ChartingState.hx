@@ -103,7 +103,7 @@ class ChartingState extends MusicBeatState
 	
 	var guitarPart:Bool = false;
 
-	var noteTypes = ['normal', 'phone', 'phone-alt', 'phone-zardy', 'shape'];
+	var noteTypes = ['normal', 'phone', 'phone-alt', 'shape'];
 	var curNoteType:Int;
 
 	var shagVoice:Bool;
@@ -135,6 +135,7 @@ class ChartingState extends MusicBeatState
 				stage: 'stage',
 				speed: 1,
 				mania: 0,
+				gfVersion: 'gf',
 				gf: "gf",
 				validScore: false
 			};
